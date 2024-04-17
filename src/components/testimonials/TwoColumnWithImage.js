@@ -11,6 +11,10 @@ import { ReactComponent as ArrowRightIcon } from "../../images/arrow-right-2-ico
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-4.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-5.svg";
 
+import testi1 from "images/kms/testimony/testi1.webp";
+import testi2 from "images/kms/testimony/testi2.webp";
+import testi3 from "images/kms/testimony/testi3.webp";
+
 import "slick-carousel/slick/slick.css";
 
 const Container = tw.div`relative`;
@@ -80,27 +84,25 @@ export default () => {
    */
   const testimonials = [
     {
-      imageSrc: "https://placehold.co/400/EEE/31343C",
+      imageSrc: testi1,
       quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Bu Susi",
-      customerTitle: "Pertamina",
+        "Barang kami telah tiba dengan selamat dan kemasannya sangat baik. Kami sangat merekomendasikan toko ini kepada siapa pun yang mencari layanan digital printing yang andal dan berkualitas.",
+      customerName: "Pak Budiarta",
+      customerTitle: "Kementrian Kesehatan RI",
     },
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
+      imageSrc: testi2,
       quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Pak Mahfud",
-      customerTitle: "Tokopedia",
+        "Staff yang responsif dan ramah dalam proses design. Hasilnya juga sangat bagus, teks terbaca jelas dan cutting designnya sangat rapih. ",
+      customerName: "Pak Hartono",
+      customerTitle: "Polda Metro Jaya",
     },
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1580852300654-03c803a14e24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4.25&w=512&h=512&q=80",
+      imageSrc: testi3,
       quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Pak Elas",
-      customerTitle: "Manager",
+        "Pesanannya mudah dan cepat, tim layanan pelanggan sangat ramah dan responsif. Barangnya melebihi ekspektasi kami, dengan desain yang jelas dan detail. Kami puas sekali dan pasti akan kembali lagi.",
+      customerName: "Bu Astuti",
+      customerTitle: "DPM PTSP Provinsi DKI Jakarta",
     },
   ];
   return (

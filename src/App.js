@@ -154,21 +154,17 @@ const tabs = {
 
 const stat = {
   subheading: "",
-  heading: "Over 9000 Projects Completed",
+  heading: "Why choose our products?",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "With our expertise in Digital Printing and our extensive product selection, we believe we have what it takes to satisfy all your digital printing needs.",
   stats: [
     {
-      key: "Clients",
-      value: "2500+",
+      key: "Products",
+      value: "200+",
     },
     {
-      key: "Revenues",
-      value: "$100M+",
-    },
-    {
-      key: "Employees",
-      value: "150+",
+      key: "Quality Assurance",
+      value: "100%",
     },
   ],
 };

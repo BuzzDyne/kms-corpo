@@ -2,6 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
+import heroBg from "images/kms/mesin.jpg";
 
 import Header, {
   NavLink,
@@ -24,7 +25,7 @@ const StyledHeader = styled(Header)`
 `;
 const Container = styled.div`
   ${tw`relative -mx-8 -mt-8 bg-center bg-cover`}
-  background-image: url("https://placehold.co/1920x1280/EEE/31343C");
+  background-image: url("${heroBg}");
 `;
 
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-primary-500 opacity-25`;
@@ -65,13 +66,13 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
 export default () => {
   const navLinks = [
     <NavLinks key={1}>
-      <NavLink href="#">About</NavLink>
-      <NavLink href="#">Blog</NavLink>
-      <NavLink href="#">Locations</NavLink>
-      <NavLink href="#">Pricing</NavLink>
+      <NavLink href="#">About Us</NavLink>
+      <NavLink href="#">Products</NavLink>
+      <NavLink href="#">Testimonials</NavLink>
+      <NavLink href="#">Contant Us</NavLink>
     </NavLinks>,
     <NavLinks key={2}>
-      <PrimaryLink href="/#">Contact Us</PrimaryLink>
+      <PrimaryLink href="/#">English / Indonesian</PrimaryLink>
     </NavLinks>,
   ];
 
@@ -86,7 +87,7 @@ export default () => {
             <Heading>
               <span>Engage the finest</span>
               <br />
-              <SlantedBackground>Acrylic Experts</SlantedBackground>
+              <SlantedBackground>Digital Printing Experts</SlantedBackground>
             </Heading>
             <PrimaryAction>Explore Our Products</PrimaryAction>
           </LeftColumn>

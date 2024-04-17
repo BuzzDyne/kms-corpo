@@ -13,6 +13,15 @@ import {
 import { SectionDescription } from "components/misc/Typography";
 import Slider from "react-infinite-logo-slider";
 
+import logo1 from "images/kms/logoCompany/logo1.webp";
+import logo2 from "images/kms/logoCompany/logo2.webp";
+import logo3 from "images/kms/logoCompany/logo3.webp";
+import logo4 from "images/kms/logoCompany/logo4.webp";
+import logo5 from "images/kms/logoCompany/logo5.webp";
+import logo6 from "images/kms/logoCompany/logo6.webp";
+import logo7 from "images/kms/logoCompany/logo7.webp";
+import logo8 from "images/kms/logoCompany/logo8.webp";
+
 const Container = tw(
   ContainerBase
 )`my-8 lg:my-10 bg-primary-900 text-gray-100 -mx-8 px-8`;
@@ -48,25 +57,28 @@ export default ({
           blurBorders={false}
         >
           <Slider.Slide>
-            <img
-              src="https://placehold.co/200/84DCC6/292F36"
-              alt="any"
-              className="w-36"
-            />
+            <img src={logo1} alt="logo1" className="w-36" />
           </Slider.Slide>
           <Slider.Slide>
-            <img
-              src="https://placehold.co/200/2B59C3/C9A690"
-              alt="any2"
-              className="w-36"
-            />
+            <img src={logo2} alt="logo2" className="w-36" />
           </Slider.Slide>
           <Slider.Slide>
-            <img
-              src="https://placehold.co/400/D36582/31343C"
-              alt="any3"
-              className="w-36"
-            />
+            <img src={logo8} alt="logo8" className="w-36" />
+          </Slider.Slide>
+          <Slider.Slide>
+            <img src={logo6} alt="logo6" className="w-36" />
+          </Slider.Slide>
+          <Slider.Slide>
+            <img src={logo4} alt="logo4" className="w-36" />
+          </Slider.Slide>
+          <Slider.Slide>
+            <img src={logo5} alt="logo5" className="w-36" />
+          </Slider.Slide>
+          <Slider.Slide>
+            <img src={logo7} alt="logo7" className="w-36" />
+          </Slider.Slide>
+          <Slider.Slide>
+            <img src={logo3} alt="logo3" className="w-36" />
           </Slider.Slide>
         </Slider>
       </ContentWithPaddingXl>

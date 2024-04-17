@@ -39,12 +39,12 @@ export default () => {
           </LogoContainer>
           <LinksContainer>
             <Link href="#">Home</Link>
-            <Link href="#">About</Link>
+            <Link href="#">About Us</Link>
+            <Link href="#">Products</Link>
+            <Link href="#">Testimonials</Link>
             <Link href="#">Contact Us</Link>
-            <Link href="#">Blog</Link>
-            <Link href="#">Reviews</Link>
           </LinksContainer>
-          <SocialLinksContainer>
+          {/* <SocialLinksContainer>
             <SocialLink href="https://facebook.com">
               <FacebookIcon />
             </SocialLink>
@@ -54,9 +54,11 @@ export default () => {
             <SocialLink href="https://youtube.com">
               <YoutubeIcon />
             </SocialLink>
-          </SocialLinksContainer>
+          </SocialLinksContainer> */}
           <CopyrightText>
-            &copy; Copyright 2020, Treact Inc. All Rights Reserved.
+            &copy; 2024 PT Kreasi Milenial Sentosa. All Rights Reserved.
+            <br />
+            Developed by
           </CopyrightText>
         </Row>
       </Content>

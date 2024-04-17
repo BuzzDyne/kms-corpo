@@ -53,7 +53,7 @@ export default ({
       <span tw="text-primary-500"> Customer Satisfactory</span> is everything
     </>
   ),
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  description = "As the founder of our company, I am immensely proud to introduce you to our range of products. Each item has been meticulously crafted with a passion for quality and innovation. Our dedication to excellence is reflected in every aspect of our products, from design to functionality. We believe in offering more than just merchandise; we strive to provide solutions that enhance your life. With a commitment to customer satisfaction at the forefront of our mission, we invite you to explore our collection and experience the difference for yourself. Thank you for choosing us to be the solution of your digital printing needs.",
   imageSrc = packageImage1,
   imageCss = null,
   imageContainerCss = null,
@@ -100,7 +100,9 @@ export default ({
             <Description>{description}</Description>
             <CustomerInfo>
               <CustomerName>Ivan Leonardo</CustomerName>
-              <CustomerTitle>Founder</CustomerTitle>
+              <CustomerTitle>
+                Founder of PT Kreasi Milenial Sentosa
+              </CustomerTitle>
             </CustomerInfo>
           </TextContent>
         </TextColumn>
