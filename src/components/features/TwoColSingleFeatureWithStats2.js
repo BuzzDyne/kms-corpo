@@ -10,6 +10,8 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import StatsIllustrationSrc from "images/stats-illustration.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 import ceoImage from "images/kms/ceo.webp";
+import { useLanguage } from "context/LanguageContext.js";
+import TC from "textContent.js";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -46,58 +48,22 @@ const DecoratorBlob = styled(SvgDotPattern)((props) => [
   tw`w-20 h-20 absolute right-0 bottom-0 transform translate-x-1/2 translate-y-1/2 fill-current text-primary-500 -z-10`,
 ]);
 
-export default ({
-  subheading = "Our Founder's Message",
-  heading = (
-    <>
-      <span tw="text-primary-500"> Customer Satisfactory</span> is everything
-    </>
-  ),
-  description = "As the founder of our company, I am immensely proud to introduce you to our range of products. Each item has been meticulously crafted with a passion for quality and innovation. Our dedication to excellence is reflected in every aspect of our products, from design to functionality. We believe in offering more than just merchandise; we strive to provide solutions that enhance your life. With a commitment to customer satisfaction at the forefront of our mission, we invite you to explore our collection and experience the difference for yourself. Thank you for choosing us to be the solution of your digital printing needs.",
-  imageSrc = ceoImage,
-  imageCss = null,
-  imageContainerCss = null,
-  imageDecoratorBlob = true,
-  imageDecoratorBlobCss = null,
-  imageInsideDiv = true,
-  statistics = null,
-  textOnLeft = true,
-}) => {
-  // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
-  //Change the statistics variable as you like, add or delete objects
-  const defaultStatistics = [
-    {
-      key: "Clients",
-      value: "2282+",
-    },
-    {
-      key: "Projects",
-      value: "3891+",
-    },
-    {
-      key: "Awards",
-      value: "1000+",
-    },
-  ];
-
-  if (!statistics) statistics = defaultStatistics;
+export default () => {
+  const { language, toggleLanguage } = useLanguage();
 
   return (
     <Container>
-      <TwoColumn css={!imageInsideDiv && tw`md:items-center`}>
-        <ImageColumn css={imageContainerCss}>
-          {imageInsideDiv ? (
-            <Image imageSrc={imageSrc} css={imageCss} />
-          ) : (
-            <img src={imageSrc} css={imageCss} alt="" />
-          )}
-          {imageDecoratorBlob && <DecoratorBlob css={imageDecoratorBlobCss} />}
+      <TwoColumn css={tw`md:items-center`}>
+        <ImageColumn css={tw`mb-10`}>
+          <img src={ceoImage} alt="" />
         </ImageColumn>
-        <TextColumn textOnLeft={textOnLeft}>
+        <TextColumn textOnLeft={true}>
           <TextContent>
-            {subheading && <Subheading>{subheading}</Subheading>}
-            <Heading>{heading}</Heading>
-            <Description>{description}</Description>
+            {TC.ceoObj[language].subheading && (
+              <Subheading>{TC.ceoObj[language].subheading}</Subheading>
+            )}
+            <Heading>{TC.ceoObj[language].heading}</Heading>
+            <Description>{TC.ceoObj[language].description}</Description>
             <CustomerInfo>
               <CustomerName>Ivan Leonardo</CustomerName>
               <CustomerTitle>

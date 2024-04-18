@@ -6,6 +6,8 @@ import logo from "../../images/logo.svg";
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
 import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
+import { useLanguage } from "context/LanguageContext.js";
+import TC from "textContent.js";
 
 const Container = tw(ContainerBase)`bg-gray-900 text-gray-100 -mx-8 -mb-8`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -16,7 +18,7 @@ const LogoContainer = tw.div`flex items-center justify-center md:justify-start`;
 const LogoImg = tw.img`w-8`;
 const LogoText = tw.h5`ml-2 text-2xl font-black tracking-wider`;
 
-const LinksContainer = tw.div`mt-8 font-medium flex flex-wrap justify-center items-center flex-col sm:flex-row`;
+const LinksContainer = tw.div`mt-8 font-medium flex flex-wrap justify-center items-center flex-col sm:flex-row cursor-pointer`;
 const Link = tw.a`border-b-2 border-transparent hocus:text-gray-300 hocus:border-gray-300 pb-1 transition duration-300 mt-2 mx-4`;
 
 const SocialLinksContainer = tw.div`mt-10`;
@@ -29,6 +31,7 @@ const SocialLink = styled.a`
 
 const CopyrightText = tw.p`text-center mt-10 font-medium tracking-wide text-sm text-gray-600`;
 export default (props) => {
+  const { language, toggleLanguage } = useLanguage();
   return (
     <Container>
       <Content>
@@ -38,11 +41,21 @@ export default (props) => {
             <LogoText>Kreasi Milenial Sentosa</LogoText>
           </LogoContainer>
           <LinksContainer>
-            <Link onClick={props.scrollToAboutUs}>About Us</Link>
-            <Link onClick={props.scrollToProducts}>Products</Link>
-            <Link onClick={props.scrollToTesti}>Testimonials</Link>
-            <Link onClick={props.scrollToContact}>Contact Us</Link>
+            <Link onClick={props.scrollToAboutUs}>{TC.aboutUs[language]}</Link>
+            <Link onClick={props.scrollToProducts}>
+              {TC.products[language]}
+            </Link>
+            <Link onClick={props.scrollToTesti}>
+              {TC.testimonials[language]}
+            </Link>
+            <Link onClick={props.scrollToContact}>
+              {TC.contactUs[language]}
+            </Link>
           </LinksContainer>
+          <LinksContainer>
+            <Link onClick={toggleLanguage}>{TC.switchLang[language]}</Link>
+          </LinksContainer>
+
           {/* <SocialLinksContainer>
             <SocialLink href="https://facebook.com">
               <FacebookIcon />
@@ -57,7 +70,7 @@ export default (props) => {
           <CopyrightText>
             &copy; 2024 PT Kreasi Milenial Sentosa. All Rights Reserved.
             <br />
-            Developed by
+            {/* Developed by  */}
           </CopyrightText>
         </Row>
       </Content>

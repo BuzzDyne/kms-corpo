@@ -3,6 +3,8 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.svg";
+import { useLanguage } from "context/LanguageContext.js";
+import TC from "textContent.js";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -38,27 +40,34 @@ const SvgDotPattern1 = tw(
 )`absolute bottom-0 right-0 transform translate-y-1/2 translate-x-1/2 -z-10 opacity-50 text-primary-500 fill-current w-24`;
 
 export default (props) => {
+  const { language, toggleLanguage } = useLanguage();
+  // TC.formObj[language].
   return (
     <Container>
       <Content>
         <FormContainer>
           <div tw="mx-auto max-w-4xl" ref={props.refProp}>
-            <h3>Interested? Questions?</h3>
-            <h2>Contact Us!</h2>
+            <h3>{TC.formObj[language].subheading}</h3>
+            <h2>{TC.formObj[language].heading}</h2>
             <form>
               <TwoColumn>
                 <Column>
                   <InputContainer>
-                    <Label htmlFor="name-input">Your Name</Label>
+                    <Label htmlFor="name-input">
+                      {TC.formObj[language].name}
+                    </Label>
                     <Input
                       id="name-input"
                       type="text"
                       name="name"
                       placeholder="E.g. John Doe"
+                      disabled
                     />
                   </InputContainer>
                   <InputContainer>
-                    <Label htmlFor="email-input">Your Email Address</Label>
+                    <Label htmlFor="email-input">
+                      {TC.formObj[language].contact}
+                    </Label>
                     <Input
                       id="email-input"
                       type="email"
@@ -69,7 +78,9 @@ export default (props) => {
                 </Column>
                 <Column>
                   <InputContainer tw="flex-1">
-                    <Label htmlFor="name-input">Your Message</Label>
+                    <Label htmlFor="name-input">
+                      {TC.formObj[language].msg}
+                    </Label>
                     <TextArea
                       id="message-input"
                       name="message"

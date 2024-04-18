@@ -120,6 +120,7 @@ export default ({
           initial={{ x: "150%", display: "none" }}
           animate={animation}
           css={collapseBreakpointCss.mobileNavLinks}
+          onClick={toggleNavbar}
         >
           {links}
         </MobileNavLinks>
@@ -128,7 +129,8 @@ export default ({
           className={showNavLinks ? "open" : "closed"}
         >
           {showNavLinks ? (
-            <CloseIcon tw="w-6 h-6" />
+            // <CloseIcon tw="w-6 h-6" />
+            <></>
           ) : (
             <MenuIcon tw="w-6 h-6" />
           )}

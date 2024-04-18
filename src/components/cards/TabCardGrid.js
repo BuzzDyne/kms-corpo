@@ -10,6 +10,8 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as StarIcon } from "images/star-icon.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-5.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7.svg";
+import { useLanguage } from "context/LanguageContext";
+import TC from "textContent";
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
 const Header = tw(SectionHeading)``;
@@ -67,16 +69,18 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 `;
 
 export default (props) => {
-  const tabsKeys = Object.keys(props.tabs);
+  const { language, toggleLanguage } = useLanguage();
+
+  let tabsKeys = Object.keys(TC.prItemList[language]);
   const [activeTab, setActiveTab] = useState(tabsKeys[0]);
 
   return (
     <Container ref={props.refProp}>
       <ContentWithPaddingXl>
         <HeaderRow>
-          <Header>{props.heading}</Header>
+          <Header>{TC.prHeader[language]}</Header>
           <TabsControl>
-            {Object.keys(props.tabs).map((tabName, index) => (
+            {Object.keys(TC.prItemList[language]).map((tabName, index) => (
               <TabControl
                 key={index}
                 active={activeTab === tabName}
@@ -107,7 +111,7 @@ export default (props) => {
             initial={activeTab === tabKey ? "current" : "hidden"}
             animate={activeTab === tabKey ? "current" : "hidden"}
           >
-            {props.tabs[tabKey].map((card, index) => (
+            {TC.prItemList[language][tabKey].map((card, index) => (
               <CardContainer key={index}>
                 <Card
                   className="group"

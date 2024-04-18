@@ -71,15 +71,20 @@ export default (props) => {
   const navLinks = [
     <NavLinks key={1}>
       <NavLink onClick={props.scrollToAboutUs}>{TC.aboutUs[language]}</NavLink>
-      <NavLink onClick={props.scrollToProducts}>{TC.products[language]}</NavLink>
-      <NavLink onClick={props.scrollToTesti}>{TC.testimonials[language]}</NavLink>
-      <NavLink onClick={props.scrollToContact}>{TC.contactUs[language]}</NavLink>
+      <NavLink onClick={props.scrollToProducts}>
+        {TC.products[language]}
+      </NavLink>
+      <NavLink onClick={props.scrollToTesti}>
+        {TC.testimonials[language]}
+      </NavLink>
+      <NavLink onClick={props.scrollToContact}>
+        {TC.contactUs[language]}
+      </NavLink>
     </NavLinks>,
     <NavLinks key={2}>
       <PrimaryLink onClick={toggleLanguage}>English / Indonesian</PrimaryLink>
     </NavLinks>,
   ];
-
 
   return (
     <Container>
@@ -94,7 +99,9 @@ export default (props) => {
               <br />
               <SlantedBackground>{TC.heroHeader2[language]}</SlantedBackground>
             </Heading>
-            <PrimaryAction onClick={props.scrollToProducts}>{TC.heroBtn[language]}</PrimaryAction>
+            <PrimaryAction onClick={props.scrollToProducts}>
+              {TC.heroBtn[language]}
+            </PrimaryAction>
           </LeftColumn>
           {/* <RightColumn>
             <StyledResponsiveVideoEmbed

@@ -11,6 +11,7 @@ import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefc
 import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 import { useLanguage } from "context/LanguageContext.js";
 import TC from "textContent.js";
+import plakatImage from "images/kms/plakatFeature.webp";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -70,7 +71,7 @@ export default ({
     {
       Icon: MoneyIcon,
       title: TC.auFeature2Title[language],
-      description:TC.auFeature2Desc[language],
+      description: TC.auFeature2Desc[language],
     },
   ];
 
@@ -80,7 +81,7 @@ export default ({
     <Container ref={refProp}>
       <TwoColumn>
         <ImageColumn>
-          <Image imageSrc={"https://placehold.co/500/EEE/31343C"} />
+          <Image imageSrc={plakatImage} />
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>

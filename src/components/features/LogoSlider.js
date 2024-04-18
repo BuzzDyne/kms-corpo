@@ -22,6 +22,9 @@ import logo6 from "images/kms/logoCompany/logo6.webp";
 import logo7 from "images/kms/logoCompany/logo7.webp";
 import logo8 from "images/kms/logoCompany/logo8.webp";
 
+import { useLanguage } from "context/LanguageContext.js";
+import TC from "textContent.js";
+
 const Container = tw(
   ContainerBase
 )`my-8 lg:my-10 bg-primary-900 text-gray-100 -mx-8 px-8`;
@@ -37,21 +40,23 @@ const Stat = tw.div`flex flex-col text-center p-4 tracking-wide`;
 const StatKey = tw.div`text-xl font-medium`;
 const StatValue = tw.div`text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-black`;
 
-export default ({
-  subheading = "",
-  heading = "Our Happy Customers",
-  description = " ",
-}) => {
+export default () => {
+  const { language, toggleLanguage } = useLanguage();
+
   return (
     <Container>
       <ContentWithPaddingXl>
         <HeadingContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
-          <Heading>{heading}</Heading>
-          {description && <Description>{description}</Description>}
+          {TC.statObj[language].subheading && (
+            <Subheading>{TC.statObj[language].subheading}</Subheading>
+          )}
+          <Heading>{TC.statObj[language].heading}</Heading>
+          {TC.statObj[language].description && (
+            <Description>{TC.statObj[language].description}</Description>
+          )}
         </HeadingContainer>
         <Slider
-          width="200px"
+          width="150px"
           duration={30}
           pauseOnHover={true}
           blurBorders={false}

@@ -11,11 +11,10 @@ import { ReactComponent as ArrowRightIcon } from "../../images/arrow-right-2-ico
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-4.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-5.svg";
 
-import testi1 from "images/kms/testimony/testi1.webp";
-import testi2 from "images/kms/testimony/testi2.webp";
-import testi3 from "images/kms/testimony/testi3.webp";
-
 import "slick-carousel/slick/slick.css";
+
+import { useLanguage } from "context/LanguageContext.js";
+import TC from "textContent.js";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -78,38 +77,17 @@ const DecoratorBlob2 = tw(
 )`absolute w-32 bottom-0 right-0 -z-10 text-pink-500 opacity-15 transform translate-x-2/3 translate-y-8`;
 
 export default (props) => {
+  //TC.statObject[language]
+  const { language, toggleLanguage } = useLanguage();
   /*
    * You can modify the testimonials shown by modifying the array below
    * You can add or remove objects from the array as you need.
    */
-  const testimonials = [
-    {
-      imageSrc: testi1,
-      quote:
-        "Barang kami telah tiba dengan selamat dan kemasannya sangat baik. Kami sangat merekomendasikan toko ini kepada siapa pun yang mencari layanan digital printing yang andal dan berkualitas.",
-      customerName: "Pak Budiarta",
-      customerTitle: "Kementrian Kesehatan RI",
-    },
-    {
-      imageSrc: testi2,
-      quote:
-        "Staff yang responsif dan ramah dalam proses design. Hasilnya juga sangat bagus, teks terbaca jelas dan cutting designnya sangat rapih. ",
-      customerName: "Pak Hartono",
-      customerTitle: "Polda Metro Jaya",
-    },
-    {
-      imageSrc: testi3,
-      quote:
-        "Pesanannya mudah dan cepat, tim layanan pelanggan sangat ramah dan responsif. Barangnya melebihi ekspektasi kami, dengan desain yang jelas dan detail. Kami puas sekali dan pasti akan kembali lagi.",
-      customerName: "Bu Astuti",
-      customerTitle: "DPM PTSP Provinsi DKI Jakarta",
-    },
-  ];
   return (
     <Container ref={props.refProp}>
       <Content>
         <HeadingInfoContainer>
-          <HeadingTitle>What They Say About Us</HeadingTitle>
+          <HeadingTitle>{TC.teHeading[language]}</HeadingTitle>
           <HeadingDescription></HeadingDescription>
         </HeadingInfoContainer>
         <TestimonialSliderContainer>
@@ -117,7 +95,7 @@ export default (props) => {
             nextArrow={<NextArrow />}
             prevArrow={<PreviousArrow />}
           >
-            {testimonials.map((testimonial, index) => (
+            {TC.teList[language].map((testimonial, index) => (
               <Testimonial key={index}>
                 <ImageContainer>
                   <img

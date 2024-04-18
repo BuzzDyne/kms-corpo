@@ -10,6 +10,8 @@ import {
   ContentWithPaddingXl,
 } from "components/misc/Layouts";
 import { SectionDescription } from "components/misc/Typography";
+import { useLanguage } from "context/LanguageContext.js";
+import TC from "textContent.js";
 
 const Container = tw(
   ContainerBase
@@ -26,35 +28,23 @@ const Stat = tw.div`flex flex-col text-center p-4 tracking-wide`;
 const StatKey = tw.div`text-xl font-medium`;
 const StatValue = tw.div`text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-black`;
 
-export default ({
-  subheading = "",
-  heading = "Over 9000 Projects Completed",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  stats = [
-    {
-      key: "Clients",
-      value: "2500+",
-    },
-    {
-      key: "Revenue",
-      value: "$100M+",
-    },
-    {
-      key: "Employees",
-      value: "150+",
-    },
-  ],
-}) => {
+export default () => {
+  const { language, toggleLanguage } = useLanguage();
+
   return (
     <Container>
       <ContentWithPaddingXl>
         <HeadingContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
-          <Heading>{heading}</Heading>
-          {description && <Description>{description}</Description>}
+          {TC.statObject[language].subheading && (
+            <Subheading>{TC.statObject[language].subheading}</Subheading>
+          )}
+          <Heading>{TC.statObject[language].heading}</Heading>
+          {TC.statObject[language].description && (
+            <Description>{TC.statObject[language].description}</Description>
+          )}
         </HeadingContainer>
         <StatsContainer>
-          {stats.map((stat, index) => (
+          {TC.statObject[language].stats.map((stat, index) => (
             <Stat key={index}>
               <StatValue>{stat.value}</StatValue>
               <StatKey>{stat.key}</StatKey>
