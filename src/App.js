@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "style.css";
 import "tailwindcss/lib/css/preflight.css";
 import AnimationRevealPage from "helpers/AnimationRevealPage";
@@ -170,23 +170,62 @@ const stat = {
 };
 
 function App() {
+  const aboutUsRef = useRef(null);
+  const productsRef = useRef(null);
+  const testiRef = useRef(null);
+  const contactRef = useRef(null);
+  const [animationDisabled, setAnimationDisabled] = useState(false);
+
+  const scrollToSection = (ref) => {
+    console.log(`Inside Scroll to Section ${ref}`);
+    setAnimationDisabled(true);
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToAboutUs = () => scrollToSection(aboutUsRef);
+  const scrollToProducts = () => scrollToSection(productsRef);
+  const scrollToTesti = () => scrollToSection(testiRef);
+  const scrollToContact = () => scrollToSection(contactRef);
+
   return (
-    <AnimationRevealPage disabled>
-      <Hero />
-      <AboutUs />
-      <Products tabs={tabs} />
+    <AnimationRevealPage disabled={animationDisabled}>
+      {/* <button
+        style={{ height: "100px" }}
+        onClick={() => scrollToSection(productsRef)}
+      >
+        asd
+      </button> */}
+      <Hero
+        scrollToAboutUs={scrollToAboutUs}
+        scrollToProducts={scrollToProducts}
+        scrollToTesti={scrollToTesti}
+        scrollToContact={scrollToContact}
+      />
+      <AboutUs refProp={aboutUsRef} />
+      <Products
+        heading="Explore Our Products"
+        tabs={tabs}
+        refProp={productsRef}
+      />
       <Stat
         heading={stat.heading}
         subheading={stat.subheading}
         description={stat.description}
         stats={stat.stats}
       />
-      <Testi />
+      <Testi refProp={testiRef} />
       <Logo />
       <Ceo />
-      <Contact />
+      <Contact refProp={contactRef} />
 
-      <Footer />
+      <Footer
+        scrollToAboutUs={scrollToAboutUs}
+        scrollToProducts={scrollToProducts}
+        scrollToTesti={scrollToTesti}
+        scrollToContact={scrollToContact}
+      />
     </AnimationRevealPage>
   );
 }

@@ -37,12 +37,12 @@ const SvgDotPattern1 = tw(
   SvgDotPatternIcon
 )`absolute bottom-0 right-0 transform translate-y-1/2 translate-x-1/2 -z-10 opacity-50 text-primary-500 fill-current w-24`;
 
-export default () => {
+export default (props) => {
   return (
     <Container>
       <Content>
         <FormContainer>
-          <div tw="mx-auto max-w-4xl">
+          <div tw="mx-auto max-w-4xl" ref={props.refProp}>
             <h3>Interested? Questions?</h3>
             <h2>Contact Us!</h2>
             <form>

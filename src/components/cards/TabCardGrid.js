@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
@@ -65,45 +66,17 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
   ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-80 w-80 opacity-15 transform -translate-x-2/3 text-primary-500`}
 `;
 
-export default ({
-  heading = "Explore Our Products",
-  tabs = {
-    Plaque: [
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-        title: "Veg Mixer",
-        content: "Tomato Salad & Carrot",
-        price: "$5.99",
-        rating: "5.0",
-        reviews: "87",
-        url: "#",
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-        title: "Macaroni",
-        content: "Cheese Pizza",
-        price: "$2.99",
-        rating: "4.8",
-        reviews: "32",
-        url: "#",
-      },
-    ],
-    Giftbox: getRandomCards(),
-    Others: getRandomCards(),
-  },
-}) => {
-  const tabsKeys = Object.keys(tabs);
+export default (props) => {
+  const tabsKeys = Object.keys(props.tabs);
   const [activeTab, setActiveTab] = useState(tabsKeys[0]);
 
   return (
-    <Container>
+    <Container ref={props.refProp}>
       <ContentWithPaddingXl>
         <HeaderRow>
-          <Header>{heading}</Header>
+          <Header>{props.heading}</Header>
           <TabsControl>
-            {Object.keys(tabs).map((tabName, index) => (
+            {Object.keys(props.tabs).map((tabName, index) => (
               <TabControl
                 key={index}
                 active={activeTab === tabName}
@@ -134,7 +107,7 @@ export default ({
             initial={activeTab === tabKey ? "current" : "hidden"}
             animate={activeTab === tabKey ? "current" : "hidden"}
           >
-            {tabs[tabKey].map((card, index) => (
+            {props.tabs[tabKey].map((card, index) => (
               <CardContainer key={index}>
                 <Card
                   className="group"

@@ -52,7 +52,7 @@ export default ({
         </HeadingContainer>
         <Slider
           width="200px"
-          duration={10}
+          duration={30}
           pauseOnHover={true}
           blurBorders={false}
         >

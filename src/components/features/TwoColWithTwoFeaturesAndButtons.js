@@ -61,6 +61,7 @@ export default ({
   primaryButtonUrl = "https://timerse.com",
   features = null,
   textOnLeft = true,
+  refProp,
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
@@ -86,7 +87,7 @@ export default ({
   if (!features) features = defaultFeatures;
 
   return (
-    <Container>
+    <Container ref={refProp}>
       <TwoColumn>
         <ImageColumn>
           <Image imageSrc={"https://placehold.co/500/EEE/31343C"} />

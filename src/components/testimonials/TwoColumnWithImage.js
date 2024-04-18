@@ -77,7 +77,7 @@ const DecoratorBlob2 = tw(
   SvgDecoratorBlob2
 )`absolute w-32 bottom-0 right-0 -z-10 text-pink-500 opacity-15 transform translate-x-2/3 translate-y-8`;
 
-export default () => {
+export default (props) => {
   /*
    * You can modify the testimonials shown by modifying the array below
    * You can add or remove objects from the array as you need.
@@ -106,7 +106,7 @@ export default () => {
     },
   ];
   return (
-    <Container>
+    <Container ref={props.refProp}>
       <Content>
         <HeadingInfoContainer>
           <HeadingTitle>What They Say About Us</HeadingTitle>

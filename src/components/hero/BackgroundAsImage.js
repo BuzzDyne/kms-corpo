@@ -63,13 +63,13 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
   }
 `;
 
-export default () => {
+export default (props) => {
   const navLinks = [
     <NavLinks key={1}>
-      <NavLink href="#">About Us</NavLink>
-      <NavLink href="#">Products</NavLink>
-      <NavLink href="#">Testimonials</NavLink>
-      <NavLink href="#">Contant Us</NavLink>
+      <NavLink onClick={props.scrollToAboutUs}>About Us</NavLink>
+      <NavLink onClick={props.scrollToProducts}>Products</NavLink>
+      <NavLink onClick={props.scrollToTesti}>Testimonials</NavLink>
+      <NavLink onClick={props.scrollToContact}>Contant Us</NavLink>
     </NavLinks>,
     <NavLinks key={2}>
       <PrimaryLink href="/#">English / Indonesian</PrimaryLink>

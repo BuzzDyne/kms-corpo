@@ -28,7 +28,7 @@ const SocialLink = styled.a`
 `;
 
 const CopyrightText = tw.p`text-center mt-10 font-medium tracking-wide text-sm text-gray-600`;
-export default () => {
+export default (props) => {
   return (
     <Container>
       <Content>
@@ -38,11 +38,10 @@ export default () => {
             <LogoText>Kreasi Milenial Sentosa</LogoText>
           </LogoContainer>
           <LinksContainer>
-            <Link href="#">Home</Link>
-            <Link href="#">About Us</Link>
-            <Link href="#">Products</Link>
-            <Link href="#">Testimonials</Link>
-            <Link href="#">Contact Us</Link>
+            <Link onClick={props.scrollToAboutUs}>About Us</Link>
+            <Link onClick={props.scrollToProducts}>Products</Link>
+            <Link onClick={props.scrollToTesti}>Testimonials</Link>
+            <Link onClick={props.scrollToContact}>Contact Us</Link>
           </LinksContainer>
           {/* <SocialLinksContainer>
             <SocialLink href="https://facebook.com">
