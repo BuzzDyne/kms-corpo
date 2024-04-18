@@ -9,7 +9,8 @@ import {
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
 import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
-import TeamIllustrationSrc from "images/team-illustration-2.svg";
+import { useLanguage } from "context/LanguageContext.js";
+import TC from "textContent.js";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -53,34 +54,23 @@ const PrimaryButton = tw(
 )`mt-8 md:mt-10 text-sm inline-block mx-auto md:mx-0`;
 
 export default ({
-  subheading = "About Us",
   heading = <>Kreasi Milenial Sentosa</>,
-  description = "As a leading printing company, Kreasi Milenial Sentosa believes in the power of creativity and precision. Each print we produce reflects the essence of identity and branding, embodying our commitment to excellence. With state-of-the-art technology at our fingertips, our Jakarta-based team ensures that every printing project, from intricate designs to large-scale campaigns, is executed with utmost precision and efficiency.",
-  description2 = "Our success lies in our ability to understand our clients' needs and deliver tailored printing solutions. Backed by a team of skilled professionals, Kreasi Milenial Sentosa stands ready to be your trusted partner for all your printing needs. Experience the art of printing with us, where creativity knows no bounds.",
-  primaryButtonText = "See Our Portfolio",
-  primaryButtonUrl = "https://timerse.com",
   features = null,
   textOnLeft = true,
   refProp,
 }) => {
-  // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
+  const { language, toggleLanguage } = useLanguage();
 
-  /*
-   * Change the features variable as you like, add or delete objects
-   * `icon` must be a React SVG component. See how BriefcaseIcon is imported above. For a full list of available icons, see Feather Icons.
-   */
   const defaultFeatures = [
     {
       Icon: BriefcaseIcon,
-      title: "Innovation",
-      description:
-        "We pioneer new ideas and technologies to deliver creative printing solutions for our clients.",
+      title: TC.auFeature1Title[language],
+      description: TC.auFeature1Desc[language],
     },
     {
       Icon: MoneyIcon,
-      title: "Quality Assurance",
-      description:
-        "Our rigorous quality control ensures every print meets the highest standards, leaving a lasting impression.",
+      title: TC.auFeature2Title[language],
+      description:TC.auFeature2Desc[language],
     },
   ];
 
@@ -94,10 +84,10 @@ export default ({
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
-            <Subheading>{subheading}</Subheading>
+            <Subheading>{TC.aboutUs[language]}</Subheading>
             <Heading>{heading}</Heading>
-            <Description>{description}</Description>
-            <Description>{description2}</Description>
+            <Description>{TC.auDesc1[language]}</Description>
+            <Description>{TC.auDesc2[language]}</Description>
             <Features>
               {features.map((feature, index) => (
                 <Feature key={index}>

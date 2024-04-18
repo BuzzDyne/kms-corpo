@@ -3,6 +3,8 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import heroBg from "images/kms/mesin.jpg";
+import { useLanguage } from "context/LanguageContext.js";
+import TC from "textContent.js";
 
 import Header, {
   NavLink,
@@ -64,17 +66,20 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
 `;
 
 export default (props) => {
+  const { language, toggleLanguage } = useLanguage();
+
   const navLinks = [
     <NavLinks key={1}>
-      <NavLink onClick={props.scrollToAboutUs}>About Us</NavLink>
-      <NavLink onClick={props.scrollToProducts}>Products</NavLink>
-      <NavLink onClick={props.scrollToTesti}>Testimonials</NavLink>
-      <NavLink onClick={props.scrollToContact}>Contant Us</NavLink>
+      <NavLink onClick={props.scrollToAboutUs}>{TC.aboutUs[language]}</NavLink>
+      <NavLink onClick={props.scrollToProducts}>{TC.products[language]}</NavLink>
+      <NavLink onClick={props.scrollToTesti}>{TC.testimonials[language]}</NavLink>
+      <NavLink onClick={props.scrollToContact}>{TC.contactUs[language]}</NavLink>
     </NavLinks>,
     <NavLinks key={2}>
-      <PrimaryLink href="/#">English / Indonesian</PrimaryLink>
+      <PrimaryLink onClick={toggleLanguage}>English / Indonesian</PrimaryLink>
     </NavLinks>,
   ];
+
 
   return (
     <Container>
@@ -85,11 +90,11 @@ export default (props) => {
           <LeftColumn>
             {/* <Notification>Feel free to directly!</Notification> */}
             <Heading>
-              <span>Engage the finest</span>
+              <span>{TC.heroHeader1[language]}</span>
               <br />
-              <SlantedBackground>Digital Printing Experts</SlantedBackground>
+              <SlantedBackground>{TC.heroHeader2[language]}</SlantedBackground>
             </Heading>
-            <PrimaryAction>Explore Our Products</PrimaryAction>
+            <PrimaryAction onClick={props.scrollToProducts}>{TC.heroBtn[language]}</PrimaryAction>
           </LeftColumn>
           {/* <RightColumn>
             <StyledResponsiveVideoEmbed

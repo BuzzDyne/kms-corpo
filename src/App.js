@@ -38,6 +38,7 @@ import Testi from "components/testimonials/TwoColumnWithImage";
 import Logo from "components/features/LogoSlider";
 import Ceo from "components/features/TwoColSingleFeatureWithStats2";
 import Contact from "components/forms/SimpleContactUs";
+import { LanguageProvider } from "context/LanguageContext";
 
 const tabs = {
   Plaque: [
@@ -182,7 +183,7 @@ function App() {
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  };                                                    
 
   const scrollToAboutUs = () => scrollToSection(aboutUsRef);
   const scrollToProducts = () => scrollToSection(productsRef);
@@ -190,43 +191,45 @@ function App() {
   const scrollToContact = () => scrollToSection(contactRef);
 
   return (
-    <AnimationRevealPage disabled={animationDisabled}>
-      {/* <button
-        style={{ height: "100px" }}
-        onClick={() => scrollToSection(productsRef)}
-      >
-        asd
-      </button> */}
-      <Hero
-        scrollToAboutUs={scrollToAboutUs}
-        scrollToProducts={scrollToProducts}
-        scrollToTesti={scrollToTesti}
-        scrollToContact={scrollToContact}
-      />
-      <AboutUs refProp={aboutUsRef} />
-      <Products
-        heading="Explore Our Products"
-        tabs={tabs}
-        refProp={productsRef}
-      />
-      <Stat
-        heading={stat.heading}
-        subheading={stat.subheading}
-        description={stat.description}
-        stats={stat.stats}
-      />
-      <Testi refProp={testiRef} />
-      <Logo />
-      <Ceo />
-      <Contact refProp={contactRef} />
+    <LanguageProvider>
+      <AnimationRevealPage disabled={animationDisabled}>
+        {/* <button
+          style={{ height: "100px" }}
+          onClick={() => scrollToSection(productsRef)}
+        >
+          asd
+        </button> */}
+        <Hero
+          scrollToAboutUs={scrollToAboutUs}
+          scrollToProducts={scrollToProducts}
+          scrollToTesti={scrollToTesti}
+          scrollToContact={scrollToContact}
+        />
+        <AboutUs refProp={aboutUsRef} />
+        <Products
+          heading='Explore Our Products'
+          tabs={tabs}
+          refProp={productsRef}
+        />
+        <Stat
+          heading={stat.heading}
+          subheading={stat.subheading}
+          description={stat.description}
+          stats={stat.stats}
+        />
+        <Testi refProp={testiRef} />
+        <Logo />
+        <Ceo />
+        <Contact refProp={contactRef} />
 
-      <Footer
-        scrollToAboutUs={scrollToAboutUs}
-        scrollToProducts={scrollToProducts}
-        scrollToTesti={scrollToTesti}
-        scrollToContact={scrollToContact}
-      />
-    </AnimationRevealPage>
+        <Footer
+          scrollToAboutUs={scrollToAboutUs}
+          scrollToProducts={scrollToProducts}
+          scrollToTesti={scrollToTesti}
+          scrollToContact={scrollToContact}
+        />
+      </AnimationRevealPage>
+    </LanguageProvider>
   );
 }
 
