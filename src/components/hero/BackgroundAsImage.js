@@ -82,7 +82,9 @@ export default (props) => {
       </NavLink>
     </NavLinks>,
     <NavLinks key={2}>
-      <PrimaryLink onClick={toggleLanguage}>English / Indonesian</PrimaryLink>
+      <PrimaryLink onClick={toggleLanguage}>
+        {TC.switchLang[language]}
+      </PrimaryLink>
     </NavLinks>,
   ];
 

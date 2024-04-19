@@ -2,7 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
+import {
+  SectionHeading,
+  Subheading as SubheadingBase,
+} from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
@@ -10,8 +13,12 @@ import SupportIconImage from "images/support-icon.svg";
 import ShieldIconImage from "images/shield-icon.svg";
 import CustomizeIconImage from "images/customize-icon.svg";
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
+import { useLanguage } from "context/LanguageContext.js";
+import TC from "textContent.js";
+import waIcon from "images/kms/icons/whatsappsvg.svg";
+import emailIcon from "images/kms/icons/email.svg";
 
-const Heading = tw(SectionHeading)``;
+const Heading = tw(SectionHeading)`w-full`;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`text-center mx-auto`;
 const ThreeColumnContainer = styled.div`
@@ -22,7 +29,7 @@ const Column = styled.div`
 `;
 
 const Card = styled.a`
-  ${tw`flex flex-col items-center text-center h-full mx-4 px-4 py-8 rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-105 `}
+  ${tw`flex flex-col items-center text-center h-full mx-2 px-4 py-8 rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-105 `}
   .imageContainer {
     ${tw`text-center rounded-full p-4 bg-gray-100`}
     img {
@@ -50,34 +57,18 @@ const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-40`}
 `;
 
-export default ({
-  cards = [
-    {
-      imageSrc: ShieldIconImage,
-      title: "Secure",
-      description: "We strictly only deal with vendors that provide top notch security.",
-      url: "https://timerse.com"
-    },
-    {
-      imageSrc: SupportIconImage,
-      title: "24/7 Support",
-      description: "Lorem ipsum donor amet siti ceali placeholder text",
-      url: "https://google.com"
-    },
-    {
-      imageSrc: CustomizeIconImage,
-      title: "Customizable",
-      description: "Lorem ipsum donor amet siti ceali placeholder text",
-      url: "https://reddit.com"
-    }
-  ],
-  linkText = "Learn More",
-  heading = "",
-  subheading = "",
-  description = "",
-  imageContainerCss = null,
-  imageCss = null
-}) => {
+const cards = [
+  {
+    imageSrc: emailIcon,
+    title: "team@ptkreasimilenialsentosa.id",
+  },
+  {
+    imageSrc: waIcon,
+    title: "0812-9898-8130",
+  },
+];
+
+export default (props) => {
   /*
    * This componets accepts a prop - `cards` which is an array of object denoting the cards. Each object in the cards array can have the following keys (Change it according to your need, you can also add more objects to have more cards in this feature component):
    *  1) imageSrc - the image shown at the top of the card
@@ -85,27 +76,60 @@ export default ({
    *  3) description - the description of the card
    *  4) url - the url that the card should goto on click
    */
+  const { language, toggleLanguage } = useLanguage();
+
+  const openWhatsappChat = () => {
+    const waLink = `https://api.whatsapp.com/send?phone=6281298988130&text=Halo,%20PT%20Kreasi%20Milenial%20Sentosa.%20Saya%20mau%20bertanya%20soal%20produk%20anda`;
+    window.open(waLink, "_blank");
+  };
+
+  const openEmailIntent = () => {
+    const subject = encodeURIComponent(
+      "Pertanyaan Soal PT Kreasi Milenial Sentosa"
+    );
+    const body = encodeURIComponent(
+      "Halo, PT Kreasi Milenial Sentosa. Saya mau bertanya soal produk anda"
+    );
+    const email = encodeURIComponent("team@ptkreasimilenialsentosa.id");
+
+    const emailUrl = `mailto:${email}?subject=${subject}&body=${body}`;
+
+    window.open(emailUrl, "_blank");
+  };
+
+  const handleCardClick = (index) => {
+    switch (index) {
+      case 0:
+        openEmailIntent();
+        break;
+      case 1:
+        openWhatsappChat();
+        break;
+      default:
+        openWhatsappChat();
+        break;
+    }
+  };
+
   return (
-    <Container>
+    <Container ref={props.refProp}>
       <ContentWithPaddingXl>
-        {subheading && <Subheading>{subheading}</Subheading>}
-        {heading && <Heading>{heading}</Heading>}
-        {description && <Description>{description}</Description>}
+        {/* <Subheading>{subheading}</Subheading> */}
+        <Heading>{TC.contactInfoHeading[language]}</Heading>
+        <Description>{TC.contactInfoDesc[language]}</Description>
         <ThreeColumnContainer>
           {cards.map((card, i) => (
             <Column key={i}>
-              <Card href={card.url}>
-                <span className="imageContainer" css={imageContainerCss}>
-                  <img src={card.imageSrc} alt="" css={imageCss} />
+              <Card href={card.url} onClick={() => handleCardClick(i)}>
+                <span className="imageContainer">
+                  <img src={card.imageSrc} alt="" />
                 </span>
                 <span className="title">{card.title}</span>
                 <p className="description">{card.description}</p>
-                {linkText && (
-                  <span className="link">
-                    <span>{linkText}</span>
-                    <ArrowRightIcon className="icon" />
-                  </span>
-                )}
+                {/* <span className="link">
+                  <span>Learn More</span>
+                  <ArrowRightIcon className="icon" />
+                </span> */}
               </Card>
             </Column>
           ))}

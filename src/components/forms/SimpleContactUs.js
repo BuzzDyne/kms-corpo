@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.svg";
 import { useLanguage } from "context/LanguageContext.js";
 import TC from "textContent.js";
+import { RotatingLines } from "react-loader-spinner";
+import { useForm, ValidationError } from "@formspree/react";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
+
+const LoadingSpinner = () => {
+  return (
+    <div tw="absolute inset-0 flex items-center justify-center">
+      <RotatingLines
+        strokeColor="white"
+        strokeWidth="2"
+        animationDuration="0.25"
+        width="40"
+      />
+      <div>Loading...</div>
+    </div>
+  );
+};
 
 const FormContainer = styled.div`
   ${tw`p-10 sm:p-12 md:p-16 bg-primary-500 text-gray-100 rounded-lg relative`}
@@ -15,7 +31,7 @@ const FormContainer = styled.div`
     ${tw`mt-4`}
   }
   h2 {
-    ${tw`text-3xl sm:text-4xl font-bold`}
+    ${tw`text-3xl sm:text-4xl font-semibold`}
   }
   input,
   textarea {
@@ -27,6 +43,9 @@ const FormContainer = styled.div`
   }
 `;
 
+const SuccessMsg = tw.div`absolute inset-0 flex items-center justify-center p-10`;
+const FailedMsg = tw.div`absolute inset-0 flex items-center justify-center p-10`;
+const ValidationMsg = tw.div`bg-red-500 text-white p-2 mt-4 rounded-md font-bold`;
 const TwoColumn = tw.div`flex flex-col sm:flex-row justify-between`;
 const Column = tw.div`sm:w-5/12 flex flex-col`;
 const InputContainer = tw.div`relative py-5 mt-6`;
@@ -39,62 +58,138 @@ const SvgDotPattern1 = tw(
   SvgDotPatternIcon
 )`absolute bottom-0 right-0 transform translate-y-1/2 translate-x-1/2 -z-10 opacity-50 text-primary-500 fill-current w-24`;
 
-export default (props) => {
+export default () => {
   const { language, toggleLanguage } = useLanguage();
-  // TC.formObj[language].
+  const [name, setName] = useState("");
+  const [emailPhone, setEmailPhone] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const [validationMsg, setValidationMsg] = useState("");
+  // All fields are required
+  // Message must be longer than 5 characters
+
+  const nameHandler = (e) => {
+    setName(e.target.value);
+  };
+
+  const emailPhoneHandler = (e) => {
+    setEmailPhone(e.target.value);
+  };
+
+  const messageHandler = (e) => {
+    setMessage(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setValidationMsg("");
+
+    // Validation
+    if (!name || !emailPhone || !message) {
+      setValidationMsg(TC.formObj[language].validation1);
+      return;
+    }
+
+    if (name.length < 3 || emailPhone.length < 3 || message.length < 3) {
+      setValidationMsg(TC.formObj[language].validation2);
+      return;
+    }
+
+    // Begin Form Submit
+    setIsLoading(true);
+
+    const formData = new FormData(e.target);
+    try {
+      const response = await fetch("https://formspree.io/f/xjvnjyrj", {
+        method: "POST",
+        body: JSON.stringify({ name, emailPhone, message }),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+      if (response.ok) {
+        setIsSuccess(true);
+      } else {
+        setIsError(true);
+      }
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <Container>
       <Content>
         <FormContainer>
-          <div tw="mx-auto max-w-4xl" ref={props.refProp}>
-            <h3>{TC.formObj[language].subheading}</h3>
-            <h2>{TC.formObj[language].heading}</h2>
-            <form>
-              <TwoColumn>
-                <Column>
-                  <InputContainer>
-                    <Label htmlFor="name-input">
-                      {TC.formObj[language].name}
-                    </Label>
-                    <Input
-                      id="name-input"
-                      type="text"
-                      name="name"
-                      placeholder="E.g. John Doe"
-                      disabled
-                    />
-                  </InputContainer>
-                  <InputContainer>
-                    <Label htmlFor="email-input">
-                      {TC.formObj[language].contact}
-                    </Label>
-                    <Input
-                      id="email-input"
-                      type="email"
-                      name="email"
-                      placeholder="E.g. john@mail.com"
-                    />
-                  </InputContainer>
-                </Column>
-                <Column>
-                  <InputContainer tw="flex-1">
-                    <Label htmlFor="name-input">
-                      {TC.formObj[language].msg}
-                    </Label>
-                    <TextArea
-                      id="message-input"
-                      name="message"
-                      placeholder="Bagaimana cara memesan ya?"
-                    />
-                  </InputContainer>
-                </Column>
-              </TwoColumn>
+          {!isLoading && !isSuccess && !isError && (
+            <div tw="mx-auto max-w-4xl">
+              <h3>{TC.formObj[language].subheading}</h3>
+              <h2>{TC.formObj[language].heading}</h2>
 
-              <SubmitButton type="button" value="Submit">
-                Submit
-              </SubmitButton>
-            </form>
-          </div>
+              <form onSubmit={handleSubmit}>
+                <TwoColumn>
+                  <Column>
+                    <InputContainer>
+                      <Label htmlFor="name-input">
+                        {TC.formObj[language].name}
+                      </Label>
+                      <Input
+                        id="name-input"
+                        type="text"
+                        onChange={nameHandler}
+                        value={name}
+                        placeholder="E.g. John Doe"
+                      />
+                    </InputContainer>
+                    <InputContainer>
+                      <Label htmlFor="email-input">
+                        {TC.formObj[language].contact}
+                      </Label>
+                      <Input
+                        id="email-input"
+                        type="text"
+                        onChange={emailPhoneHandler}
+                        value={emailPhone}
+                        placeholder="E.g. john@mail.com"
+                      />
+                    </InputContainer>
+                  </Column>
+                  <Column>
+                    <InputContainer tw="flex-1">
+                      <Label htmlFor="message-input">
+                        {TC.formObj[language].msg}
+                      </Label>
+                      <TextArea
+                        id="message-input"
+                        onChange={messageHandler}
+                        value={message}
+                        placeholder="Bagaimana cara memesan ya?"
+                      />
+                    </InputContainer>
+                  </Column>
+                </TwoColumn>
+
+                <SubmitButton type="submit">Submit</SubmitButton>
+              </form>
+              {validationMsg && <ValidationMsg>{validationMsg}</ValidationMsg>}
+            </div>
+          )}
+
+          {/* Conditionally render loading spinner */}
+          {isLoading && <LoadingSpinner />}
+
+          {/* Conditionally render success message */}
+          {isSuccess && <SuccessMsg>{TC.formObj[language].success}</SuccessMsg>}
+
+          {/* Conditionally render error message */}
+          {isError && <FailedMsg>{TC.formObj[language].failed}</FailedMsg>}
+
           <SvgDotPattern1 />
         </FormContainer>
       </Content>

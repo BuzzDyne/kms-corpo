@@ -48,8 +48,8 @@ const TC = {
   },
 
   switchLang: {
-    en: "Ganti ke Bahasa",
-    id: "Switch to English",
+    en: "Bahasa",
+    id: "English",
   },
 
   heroHeader1: {
@@ -448,24 +448,39 @@ const TC = {
     },
   },
 
+  contactInfoHeading: {
+    en: "Contact Us",
+    id: "Hubungi Kami",
+  },
+  contactInfoDesc: {
+    en: "Get Solutions for your Digital Printing needs",
+    id: "Dapatkan solusi untuk kebutuhan Digital Printing anda",
+  },
+
   formObj: {
     en: {
       subheading: "Interested? Questions?",
-      heading: "Contact Us!",
-      name: "Your Name",
-      contact: "Email Address / Phone Number",
-      msg: "Your Message",
+      heading: "Get Answers Now!",
+      name: "Name",
+      contact: "Email / Phone Number",
+      msg: "Message",
       success:
         "Message sent! We will promptly contact your email / phone number.",
+      failed: "Something is wrong. Please try again later.",
+      validation1: "All fields must be filled",
+      validation2: "All fields must be more than 3 chars long.",
     },
     id: {
       subheading: "Tertarik? Ada Pertanyaan?",
-      heading: "Hubungi Kami!",
-      name: "Nama Anda",
-      contact: "Email / Nomor Telepon Anda",
-      msg: "Pesan Anda",
+      heading: "Dapatkan jawabannya!",
+      name: "Nama",
+      contact: "Email / Nomor Telepon",
+      msg: "Pesan",
       success:
         "Pesan terkirim! Kami akan segera menghubungi anda melalui email / nomor telepon anda.",
+      failed: "Telah terjadi kesalahan. Mohon coba beberapa saat lagi.",
+      validation1: "Semua field harus terisi",
+      validation2: "Semua field harus lebih dari 3 karakter",
     },
   },
 };

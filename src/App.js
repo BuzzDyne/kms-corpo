@@ -11,6 +11,7 @@ import Stat from "components/features/ThreeColCenteredStatsPrimaryBackground";
 import Testi from "components/testimonials/TwoColumnWithImage";
 import Logo from "components/features/LogoSlider";
 import Ceo from "components/features/TwoColSingleFeatureWithStats2";
+import ContactInfo from "components/features/ThreeColSimple";
 import Contact from "components/forms/SimpleContactUs";
 import { LanguageProvider } from "context/LanguageContext";
 
@@ -55,7 +56,8 @@ function App() {
         <Testi refProp={testiRef} />
         <Logo />
         <Ceo />
-        <Contact refProp={contactRef} />
+        <ContactInfo refProp={contactRef} />
+        <Contact />
 
         <Footer
           scrollToAboutUs={scrollToAboutUs}
