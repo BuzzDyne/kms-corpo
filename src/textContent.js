@@ -97,6 +97,41 @@ const TC = {
 
   prItemList: {
     en: {
+      Featured: [
+        {
+          imageSrc: crystalGold,
+          title: "Crystal Plaque with Golden Base",
+        },
+        {
+          imageSrc: plaqueTokped,
+          title: "Acrylic Plaque with Custom Cutting",
+        },
+        {
+          imageSrc: otherImage1,
+          title: "Engraved Tumbler",
+        },
+        {
+          imageSrc: otherImage4,
+          title: "Flazz ID Card",
+        },
+        {
+          imageSrc: packageImage2,
+          title: "Corporate Gift",
+          content: "Tumbler, eMoney, Business Card Holder, Flashdisk",
+        },
+        {
+          imageSrc: otherImage5,
+          title: "Acrylic Door Sign",
+        },
+        {
+          imageSrc: otherImage6,
+          title: "Acrylic Keychain",
+        },
+        {
+          imageSrc: plaqueBrass,
+          title: "Brass Trophies",
+        },
+      ],
       Plaque: [
         {
           imageSrc: plaqueWBox,
@@ -144,31 +179,31 @@ const TC = {
         },
         {
           imageSrc: packageImage3,
-          title: "Seminar Kita (A)",
+          title: "Seminar Kit (A)",
           content:
             "Canvas Totebag, A6 Notebook, LED Tumbler, Cutlery Set, Keychain",
         },
         {
           imageSrc: packageImage4,
-          title: "Seminar Kita (B)",
+          title: "Seminar Kit (B)",
           content:
             "Canvas Totebag, A6 Notebook, Business Card Holder, Pen, Keychain",
         },
         {
           imageSrc: packageImage5,
-          title: "Seminar Kita (C)",
+          title: "Seminar Kit (C)",
           content:
             "Canvas Totebag, RFID Safe Card Holder, Umbrella, LED Tumbler, Keychain",
         },
         {
           imageSrc: packageImage6,
-          title: "Seminar Kita (D)",
+          title: "Seminar Kit (D)",
           content:
             "Canvas Totebag, Pocket Hand Sanitizer, Cutlery Set, LED Tumbler, Keychain",
         },
         {
           imageSrc: packageImage7,
-          title: "Seminar Kita (E)",
+          title: "Seminar Kit (E)",
           content:
             "Canvas Totebag, Business Card Holder, Flashdisk, LED Tumbler, Keychain",
         },
@@ -209,6 +244,41 @@ const TC = {
       ],
     },
     id: {
+      Featured: [
+        {
+          imageSrc: crystalGold,
+          title: "Plakat Kristal",
+        },
+        {
+          imageSrc: plaqueTokped,
+          title: "Plakat Akrilik",
+        },
+        {
+          imageSrc: otherImage1,
+          title: "Tumbler Engraved",
+        },
+        {
+          imageSrc: otherImage4,
+          title: "Flazz ID Card",
+        },
+        {
+          imageSrc: packageImage2,
+          title: "Corporate Gift",
+          content: "Tumbler, eMoney, Business Card Holder, Flashdisk",
+        },
+        {
+          imageSrc: otherImage5,
+          title: "Papan Pintu Akrilik",
+        },
+        {
+          imageSrc: otherImage6,
+          title: "Gantungan Kunci Akrilik",
+        },
+        {
+          imageSrc: plaqueBrass,
+          title: "Piala Kuningan",
+        },
+      ],
       Plaque: [
         {
           imageSrc: plaqueWBox,
@@ -256,31 +326,31 @@ const TC = {
         },
         {
           imageSrc: packageImage3,
-          title: "Seminar Kita (A)",
+          title: "Paket Seminar (A)",
           content:
             "Canvas Totebag, A6 Notebook, Tumbler LED, Alat Makan, Gantungan Kunci",
         },
         {
           imageSrc: packageImage4,
-          title: "Seminar Kita (B)",
+          title: "Paket Seminar (B)",
           content:
             "Canvas Totebag, A6 Notebook, Tempat Kartu Nama, Pen, Gantungan Kunci",
         },
         {
           imageSrc: packageImage5,
-          title: "Seminar Kita (C)",
+          title: "Paket Seminar (C)",
           content:
             "Canvas Totebag, RFID Safe Card Holder, Umbrella, Tumbler LED, Gantungan Kunci",
         },
         {
           imageSrc: packageImage6,
-          title: "Seminar Kita (D)",
+          title: "Paket Seminar (D)",
           content:
             "Canvas Totebag, Pocket Hand Sanitizer, Alat Makan, Tumbler LED, Gantungan Kunci",
         },
         {
           imageSrc: packageImage7,
-          title: "Seminar Kita (E)",
+          title: "Paket Seminar (E)",
           content:
             "Canvas Totebag, Tempat Kartu Nama, Flashdisk, Tumbler LED, Gantungan Kunci",
         },
