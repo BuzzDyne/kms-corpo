@@ -56,14 +56,14 @@ const SliderControlButtonContainer = styled.div`
 
 const NextArrow = ({ currentSlide, slideCount, ...props }) => (
   <SliderControlButtonContainer tw="right-0">
-    <button {...props}>
+    <button {...props} tw="border-0">
       <ArrowRightIcon />
     </button>
   </SliderControlButtonContainer>
 );
 const PreviousArrow = ({ currentSlide, slideCount, ...props }) => (
   <SliderControlButtonContainer tw="left-0">
-    <button {...props}>
+    <button {...props} tw="border-0">
       <ArrowLeftIcon />
     </button>
   </SliderControlButtonContainer>

@@ -43,7 +43,7 @@ const TC = {
     id: "Testimoni",
   },
   contactUs: {
-    en: "Contant Us",
+    en: "Contact Us",
     id: "Hubungi Kami",
   },
 

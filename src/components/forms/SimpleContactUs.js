@@ -50,9 +50,9 @@ const TwoColumn = tw.div`flex flex-col sm:flex-row justify-between`;
 const Column = tw.div`sm:w-5/12 flex flex-col`;
 const InputContainer = tw.div`relative py-5 mt-6`;
 const Label = tw.label`absolute top-0 left-0 tracking-wide font-semibold text-sm`;
-const Input = tw.input`border-b border-white`;
-const TextArea = tw.textarea`h-24 sm:h-full resize-none border-b border-white`;
-const SubmitButton = tw.button`w-full sm:w-32 mt-6 py-3 bg-gray-100 text-primary-500 rounded-full font-bold tracking-wide shadow-lg uppercase text-sm transition duration-300 transform focus:outline-none focus:shadow-outline hover:bg-gray-300 hover:text-primary-700 hocus:-translate-y-px hocus:shadow-xl`;
+const Input = tw.input`border-b border-white border-t-0 border-l-0 border-r-0`;
+const TextArea = tw.textarea`h-24 sm:h-full resize-none border-b border-white border-t-0 border-l-0 border-r-0`;
+const SubmitButton = tw.button`w-full sm:w-32 mt-6 py-3 bg-gray-100 border-0 text-primary-500 rounded-full font-bold tracking-wide shadow-lg uppercase text-sm transition duration-300 transform focus:outline-none focus:shadow-outline hover:bg-gray-300 hover:text-primary-700 hocus:-translate-y-px hocus:shadow-xl`;
 
 const SvgDotPattern1 = tw(
   SvgDotPatternIcon
@@ -136,11 +136,8 @@ export default () => {
                 <TwoColumn>
                   <Column>
                     <InputContainer>
-                      <Label htmlFor="name-input">
-                        {TC.formObj[language].name}
-                      </Label>
+                      <Label>{TC.formObj[language].name}</Label>
                       <Input
-                        id="name-input"
                         type="text"
                         onChange={nameHandler}
                         value={name}
@@ -148,11 +145,8 @@ export default () => {
                       />
                     </InputContainer>
                     <InputContainer>
-                      <Label htmlFor="email-input">
-                        {TC.formObj[language].contact}
-                      </Label>
+                      <Label>{TC.formObj[language].contact}</Label>
                       <Input
-                        id="email-input"
                         type="text"
                         onChange={emailPhoneHandler}
                         value={emailPhone}
@@ -162,11 +156,8 @@ export default () => {
                   </Column>
                   <Column>
                     <InputContainer tw="flex-1">
-                      <Label htmlFor="message-input">
-                        {TC.formObj[language].msg}
-                      </Label>
+                      <Label>{TC.formObj[language].msg}</Label>
                       <TextArea
-                        id="message-input"
                         onChange={messageHandler}
                         value={message}
                         placeholder="Bagaimana cara memesan ya?"
