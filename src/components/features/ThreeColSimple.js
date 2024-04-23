@@ -64,7 +64,7 @@ const cards = [
   },
   {
     imageSrc: waIcon,
-    title: "0812-9898-8130",
+    title: "0821-7933-7360",
   },
 ];
 
@@ -79,7 +79,7 @@ export default (props) => {
   const { language, toggleLanguage } = useLanguage();
 
   const openWhatsappChat = () => {
-    const waLink = `https://api.whatsapp.com/send?phone=6281298988130&text=Halo,%20PT%20Kreasi%20Milenial%20Sentosa.%20Saya%20mau%20bertanya%20soal%20produk%20anda`;
+    const waLink = `https://api.whatsapp.com/send?phone=6282179337360&text=Halo,%20PT%20Kreasi%20Milenial%20Sentosa.%20Saya%20mau%20bertanya%20soal%20produk%20anda`;
     window.open(waLink, "_blank");
   };
 
