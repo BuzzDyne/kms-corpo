@@ -2,7 +2,8 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import heroBg from "images/kms/mesin.jpg";
+// import heroBg from "images/kms/mesin.jpg";
+import heroBg from "images/kms/mesin2.jpg";
 import { useLanguage } from "context/LanguageContext.js";
 import TC from "textContent.js";
 
